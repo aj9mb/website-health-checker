@@ -6,9 +6,9 @@ import (
 	"time"
 )
 
-func Check(domain, port string) string {
+func Check(domain, port string, timeoutSec int) string {
 	address := domain + ":" + port
-	timeout := time.Duration(5 * time.Second)
+	timeout := time.Duration(time.Duration(timeoutSec) * time.Second)
 	conn, err := net.DialTimeout("tcp", address, timeout)
 	var status string
 	if err != nil {
